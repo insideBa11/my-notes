@@ -45,7 +45,7 @@ const router = new VueRouter({
 })
 ```
 
-### 4.注册路由器
+### 4.挂载路由器
 
 ```javascript
 new Vue({
