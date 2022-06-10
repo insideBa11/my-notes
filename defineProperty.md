@@ -138,13 +138,54 @@ Object.defineProperty(obj, 'a', {
 })
 
 for (const objKey in obj) {
-    console.log(objKey); // 'b' -->  该方法不仅能获取自身的可枚举属性，还可以获取原型链上的属性。 a 是不可枚举的，但 b 是通过 ES3 创建，默认是可枚举的
+    console.log(objKey); // 'b' -->  该方法不仅能获取自身的可枚举属性，还可以获取原型链上的属性。 a 是不可枚举的，但 b 是通过 ES3 的方法创建，默认是可枚举的
 }
 
-console.log(Object.keys(obj)); // [] 该方法只能获取自身的可枚举属性，不能获取原型链上的属性
+console.log(Object.keys(obj)); // [] 该方法只能获取自身的可枚举属性。
 
-console.log(Object.getOwnPropertyNames(obj)); // ['a'] 该方法可以获取自身的可枚举属性，也可以获取原型链上的属性
+console.log(Object.getOwnPropertyNames(obj)); // ['a'] 该方法只能获取获取自身的属性(无论是否能被枚举)。
 ```
+
+### ES3的对象
+
+使用 ES3(传统的) JSON 方式定义对象，其 configurable/writable/enumerable 默认都是 true，以下
+
+```js
+var obj = {name: 'John', age: 30}
+
+// configurable
+delete obj.name // true
+// writable
+obj.age = 32 // true
+// enumerable
+for (var a in obj) {
+	console.log(a) // age
+}
+```
+
+也即
+
+```js
+var obj = {name: 'John', age: 30}
+```
+
+等同于
+
+```js
+Object.defineProperty(obj, 'name', {
+	value: 'John',
+	configurable: true,
+	writable: true,
+	enumerable: true
+})
+Object.defineProperty(obj, 'age', {
+	value: 33,
+	configurable: true,
+	writable: true,
+	enumerable: true	
+})
+```
+
 
 ## 一道有意思的相关题
 
