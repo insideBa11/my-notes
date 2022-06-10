@@ -123,9 +123,9 @@ obj.a = 2; // 控制台：set a 2 --> 在给 obj.a 赋值时，会被 defineProp
 
 ### 数据描述符、存取描述符
 
-**如果一个描述符不具有 value、writable、enumerable、configurable 属性，那么它将被认为是一个数据描述符
+**如果一个描述符不具有 `value`、`writable`、`enumerable`、`configurable` 属性，那么它将被认为是一个数据描述符**
 
-如果一个描述符同时拥有 value 或 writable 和 get 或 set 键，则会产生一个异常**
+**如果一个描述符同时拥有 `value` 或 `writable` 和 `get` 或 `set` 键，则会产生一个异常**
 
 ## 8. 获取对象`key`的方法
 
